@@ -1,0 +1,115 @@
+<%- include("../templates/encabezado") %>
+<%- include("../templates/menu") %>
+
+<style>
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),
+                    radial-gradient(circle at 20% 30%, #3498db 40%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, #2d008f 30%, transparent 70%);
+        z-index: -1;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        background-color: #180e3e;
+        color: #fff;
+    }
+
+    .card-title {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .card-img {
+        border-radius: 15px 15px 0 0;
+        max-height: 450px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-text {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .btn-like {
+        background-color: #dc3545;
+        color: #fff;
+        border-color: #dc3545;
+        border-radius: 20px;
+        margin-top: 15px;
+    }
+
+    .btn-like:hover {
+        background-color: #c82333;
+        border-color: #c82333;
+    }
+
+    .back-btn {
+        background-color: #002855;
+        color: #fff;
+        border-color: #002855;
+        border-radius: 20px;
+        margin-top: 15px;
+    }
+
+    .back-btn:hover {
+        background-color: #001f3f;
+        border-color: #001f3f;
+    }
+</style>
+
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="card mt-3">
+                    <img src="/Negocios/images/<%= negocios.foto %>" alt="Negocio Image" class="img-fluid card-img">
+                    <div class="card-body text-center">
+                        <h1 class="card-title display-4"><%= negocios.nombre %></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="card">
+                    <input class="form-control mb-3" type="hidden" name="id" id="id" value="<%= negocios.id %>">
+                    <div class="card-body">
+                        <p class="card-text fs-5"><strong>Descripción:</strong> <%= negocios.desc %></p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+    <form action="/negocio/me-gusta/<%= user.id %>/<%= negocios.id %>" method="POST">
+        <button type="submit" class="btn btn-outline-danger btn-lg btn-like">
+            <span class="ms-2"><%= negocios.calificacion %></span>
+        </button>
+    </form>
+</div>
+
+<%- include("../templates/pie") %>
+

@@ -1,0 +1,96 @@
+<%- include ("../templates/encabezado") %>
+<%- include ("../templates/menu") %>
+
+<style>
+  body {
+    background-color: #00a778;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .container {
+    padding-top: 40px;
+  }
+
+  .heading {
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .boxcard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .card {
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+    background-color: #002855;
+    color: #fff;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .card-body {
+    text-align: center;
+  }
+
+  .card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    margin-bottom: 15px;
+  }
+
+  .btn-outline-info {
+    background-color: #00a778;
+    color: #fff;
+    border-color: #00a778;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  }
+
+  .btn-outline-info:hover {
+    background-color: #002855;
+    border-color: #002855;
+  }
+</style>
+
+<div class="container">
+  <h3 class="heading">Explora y encuentra tu negocio</h3>
+  <div class="boxcard">
+    <% negocios.forEach((negocio) => { %>
+      <div class="card">
+        <img src="/Negocios/images/<%= negocio.foto %>" class="card-img" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= negocio.nombre %></h5>
+          <p class="card-text">
+            <strong>Teléfono:</strong> <%= negocio.tel %><br>
+            <strong>Descripción:</strong> <%= negocio.desc %><br>
+            <%= negocio.calificacion %><br>
+          </p>
+          <a href="/negocio/<%= user.id %>/<%= negocio.id%>" class="btn btn-outline-info">Visualizar</a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+
+<%- include ("../templates/pie") %>
+

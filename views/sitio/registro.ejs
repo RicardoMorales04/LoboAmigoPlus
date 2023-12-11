@@ -1,0 +1,106 @@
+<%- include("../templates/encabezado")%>
+
+<style>
+    body {
+        background-image: url('https://anton.com.mx/wp-content/uploads/2020/08/71_273_30747_1562583360_5.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        color: black;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        width: 400px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+        background-color: #002855;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .form-control {
+        margin-bottom: 15px;
+    }
+
+    .form-control2 {
+        margin-bottom: 15px;
+    }
+
+    .card-footer {
+        text-align: center;
+        padding: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .btn-primary {
+        background-color: #002855;
+        color: #fff;
+        border: 1px solid #002855;
+    }
+
+    .btn-secondary {
+        background-color: #00a778;
+        color: #fff;
+        border: 1px solid #00a778;
+    }
+</style>
+
+<div class="container">
+    <form action="/nuevousuario" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-header">
+                <h1>REGISTRO</h1>
+            </div>
+            <div class="card-body">
+                <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre" autofocus>
+                <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Usuario">
+                <input class="form-control" type="text" name="password" id="password" placeholder="Password">
+                <label for="cuatri">Selecciona tu Cuatrimestre:</label>
+                <select class="form-control2" id="cuatri" name="cuatri">
+                    <!-- Opciones para Cuatrimestre -->
+                    <option value="Cuatrimestre 1">Cuatrimestre 1</option>
+                    <option value="Cuatrimestre 2">Cuatrimestre 2</option>
+                    <option value="Cuatrimestre 3">Cuatrimestre 3</option>
+                    <option value="Cuatrimestre 4">Cuatrimestre 4</option>
+                    <option value="Cuatrimestre 5">Cuatrimestre 5</option>
+                    <option value="Cuatrimestre 6">Cuatrimestre 6</option>
+                </select>
+                <label for="carrera">Selecciona tu Carrera:</label>
+                <select class="form-control2" id="carrera" name="carrera">
+                    <!-- Opciones para Carrera -->
+                    <option value="Desarrollo de software multiplataforma">Desarrollo de software multiplataforma</option>
+                    <option value="Mecatronica">Mecatronica</option>
+                    <option value="Ingeniera civil">Ingeniera civil</option>
+                </select>
+                <label for="cuatri">Selecciona tu foto de perfil:</label>
+                <input class="form-control" type="file" name="foto" id="foto" placeholder="Seleccionar Archivo">
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+                <button class="btn btn-secondary" type="reset">Borrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<%- include("../templates/pie")%>
+

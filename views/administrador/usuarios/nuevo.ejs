@@ -1,0 +1,54 @@
+<%- include("../../templates/encabezado")%>
+<%- include("../../templates/menuadmin")%>
+<style>
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),
+                    radial-gradient(circle at 20% 30%, #043148 40%, transparent 50%),
+                    radial-gradient(circle at 70% 20%, #117a62 30%, transparent 500%);
+        z-index: -1;
+    }
+</style>
+<div class="container mt-5">
+    <form action="/nuevousuarioadmin" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h1>Nuevo Usuario</h1>
+            </div>
+            <div class="card-body">
+                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" autofocus required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa tu nombre.
+                </div>
+                <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Usuario" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa un nombre de usuario.
+                </div>
+                <input class="form-control mb-3" type="text" name="correo" id="correo" placeholder="Correo" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa tu correo electrónico.
+                </div>
+                <input class="form-control mb-3" type="password" name="password" id="password" placeholder="Password" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa una contraseña.
+                </div>
+                <input class="form-control mb-3" type="file" name="foto" id="foto" placeholder="Selecciona tu foto" required>
+                <div class="invalid-feedback">
+                    Por favor, selecciona una foto para el perfil.
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" type="submit">Guardar Usuario</button>
+                <button class="btn btn-secondary" type="reset">Limpiar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<%- include("../../templates/pie")%>

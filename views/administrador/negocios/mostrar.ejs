@@ -1,0 +1,57 @@
+<%- include("../../templates/encabezado")%>
+<%- include("../../templates/menuadmin")%>
+<style>
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),
+                    radial-gradient(circle at 20% 30%, #043148  40%, transparent 50%),
+                    radial-gradient(circle at 70% 20%, #117a62 30%, transparent 500%);
+        z-index: -1;
+    }
+</style>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h1 class="mb-0">Negocios</h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Productos</th>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Editar/Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% negocios.forEach((negocio, i) => { %>
+                            <tr>
+                                <th scope="row"><%= i + 1 %></th>
+                                <td><%= negocio.nombre %></td>
+                                <td><%= negocio.desc %></td>
+                                <td><%= negocio.prod %></td>
+                                <td><img src="/Negocios/images/<%= negocio.foto %>" width="100px"></td>
+                                <td>
+                                    <a href="/editarnegocio/<%= negocio.id %>" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="/borrarnegocioadmin/<%= negocio.id %>" class="btn btn-sm btn-danger">Borrar</a>
+                                    
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../../templates/pie")%>

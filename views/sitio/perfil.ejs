@@ -1,0 +1,76 @@
+<%- include("../templates/encabezado") %>
+<%- include("../templates/menu") %>
+
+<body style="background-image: url('https://utsjr.edu.mx/build/img/noticias/05_02_01_NUEVO_INGRESO.JPG'); background-size: cover; background-position: center; overflow: hidden;"></body>
+
+<div class="container mt-5">
+    <form action="/perfil" method="post" enctype="multipart/form-data">
+        <div class="card mt-5 mx-auto" style="max-width: 800px; margin: 30px; border-radius: 15px; overflow: hidden;">
+            <div class="card-header text-center" style="background-color: #00a778; color: #fff;">
+                <h1 class="display-4">Perfil</h1>
+            </div>
+            <div class="card-body" style="background-color: #002855; color: #fff; display: flex; align-items: center; justify-content: space-between;">
+                <div style="flex-grow: 1; margin-right: 20px;">
+                    <!-- Resto del formulario -->
+                    <input type="hidden" name="id" id="id" value="<%= user.id %>">
+                    <input type="hidden" name="fotoAnterior" id="fotoAnterior" value="<%= user.foto %>">
+                    <input type="hidden" name="admin" id="admin" value="">
+
+                    <div class="mb-3">
+                        <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre" autofocus>
+                        <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Usuario">
+                        <input class="form-control" type="text" name="password" id="password" placeholder="Password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="foto" class="form-label">Cambiar Foto:</label>
+                        <input class="form-control" type="file" name="foto" id="foto">
+                        <small class="form-text">Selecciona una nueva imagen de perfil</small>
+                    </div>
+
+                    <!-- Additional fields for editing user -->
+                    <div class="mb-3">
+                        <label for="cuatri" class="form-label">Selecciona tu Cuatrimestre:</label>
+                        <select class="form-control" id="cuatri" name="cuatri">
+                            <option value="Cuatrimestre 1">Cuatrimestre 1</option>
+                            <option value="Cuatrimestre 2">Cuatrimestre 2</option>
+                            <option value="Cuatrimestre 3">Cuatrimestre 3</option>
+                            <option value="Cuatrimestre 4">Cuatrimestre 4</option>
+                            <option value="Cuatrimestre 5">Cuatrimestre 5</option>
+                            <option value="Cuatrimestre 6">Cuatrimestre 6</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="carrera" class="form-label">Selecciona tu Carrera:</label>
+                        <select class="form-control" id="carrera" name="carrera">
+                            <option value="Desarrollo de software multiplataforma">Desarrollo de software multiplataforma</option>
+                            <option value="Mecatronica">Mecatronica</option>
+                            <option value="Ingeniera civil">Ingeniera civil</option>
+                        </select>
+                    </div>
+
+                    <input class="form-control mb-3" type="hidden" value="" name="password" id="password" placeholder="Password">
+                </div>
+
+                <div class="text-center">
+                    <img src="/Usuarios/images/<%= user.foto %>" alt="Foto de perfil" class="img-fluid rounded-circle" style="width: 250px; height: 250px; object-fit: cover; border: 5px solid #fff; margin-top: 30px;">
+                </div>
+            </div>
+            <div class="card-footer text-center" style="background-color: #00a778;">
+                <button class="btn btn-primary mb-3 me-2">Editar </button>
+                <button class="btn btn-danger mb-3" onclick="confirmarEliminar()">Eliminar</button>
+                <form id="formEliminar" action="/eliminarusuario/<%= user.id %>" method="post" style="display: none;">
+                    <!-- Puedes incluir campos adicionales según tu necesidad -->
+                    <input type="hidden" name="id" value="<%= user.id %>">
+                </form>
+            </div>
+        </div>
+    </form>
+</div>
+
+<%- include("../templates/pie") %>
+
+
+
+

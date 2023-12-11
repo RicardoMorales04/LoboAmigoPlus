@@ -1,0 +1,53 @@
+<%- include("../templates/encabezado") %>
+<%- include("../templates/menu") %>
+<style>
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),
+                    radial-gradient(circle at 20% 30%, #3498db 40%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, #2d008f 30%, transparent 70%);
+        z-index: -1;
+    }
+</style>
+<div class="container pt-4">
+    <h3 class="text-center mb-4"style="color: #fff;">Tus Negocios</h3>
+    <div class="boxcard">
+        <div class="row">
+            <% negocios.forEach((negocio) => { %>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <% if (negocio && negocio.foto) { %>
+                            <img src="/Negocios/images/<%= negocio.foto %>" class="card-img" alt="..." style="width: 100%; height: 100%; object-fit: cover;">
+                            <% } else { %>  
+                            <img src="/Negocios/images/default.jpg" class="card-img" alt="Default Image" style="width: 100%; height: 100%; object-fit: cover;">
+                            <% } %>  
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <% if (negocio && negocio.id) { %>
+                                <p hidden><%= negocio.id %></p>
+                                <h5 class="card-title"><%= negocio.nombre %></h5>
+                                <p class="card-text">
+                                    <strong>Me gusta:</strong> <%= negocio.calificacion %><br>
+                                </p>
+                                <a href="/modificarnegocio/<%= user.id %>/<%= negocio.id %>" class="btn btn-outline-info">Editar</a>
+                                <% } else { %>
+                                <p>Error: Invalid negocio data</p>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+<%- include("../templates/pie") %>

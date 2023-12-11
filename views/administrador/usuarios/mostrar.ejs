@@ -1,0 +1,56 @@
+<%- include("../../templates/encabezado")%>
+<%- include("../../templates/menuadmin")%>
+<style>
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),
+                    radial-gradient(circle at 20% 30%, #043148 40%, transparent 50%),
+                    radial-gradient(circle at 70% 20%, #117a62 30%, transparent 500%);
+        z-index: -1;
+    }
+</style>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h1 class="mb-0">Usuarios</h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% usuarios.forEach((usuario, i) => { %>
+                            <tr>
+                                <th scope="row"><%= i + 1 %></th>
+                                <td><%= usuario.nombre %></td>
+                                <td><%= usuario.usuario %></td>
+                                <td>******</td>
+                                 <td><img src="/Usuarios/images/<%= usuario.foto %>" width="100px"></td>
+                                <td>
+                                    <a href="/editarusuario/<%= usuario.id %>" class="btn btn-sm btn-outline-primary">Editar</a>
+                                    <a href="/borrarusuarioadmin/<%= usuario.id %>" class="btn btn-sm btn-outline-danger">Borrar</a>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../../templates/pie")%>
